@@ -93,3 +93,19 @@
 <li>171 - <a href='https://learn.yesofficer.com/new-courses/171?activeTab=content'>Reasoning Master 2025 (Prelims Foundation)</a></li>
 <li>172 - <a href='https://learn.yesofficer.com/new-courses/172?activeTab=content'>Mains Reasoning Master 2025 (Mains Foundation)</a></li>
 <li>173 - <a href='https://learn.yesofficer.com/new-courses/173?activeTab=content'>PDF PRO</a></li>
+
+
+<code><pre>
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://learn.yesofficer.com/new-courses/"
+for x in range (180):
+  urr = url + str(x)
+  response = requests.get(urr)
+  soup = BeautifulSoup(response.content, "html.parser")
+  h1_tags = soup.find_all("h1")
+  for h1 in h1_tags:
+      open("a.html","a").write(f"<li>{} - <a href='{urr}?activeTab=content'>{h1.text}</a></li>\n")
+      print(x , h1.text)
+</pre></code>
