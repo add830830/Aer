@@ -96,10 +96,8 @@
 <tr><td>173</td><td><a target='_blank' href='https://learn.yesofficer.com/new-courses/173?activeTab=content'>PDF PRO</a></td></tr></table>
 </table>
 <code><pre>
-  
 import requests
 from bs4 import BeautifulSoup
-
 ee="<!DOCTYPE html><html><head><style>table {font-family: arial, sans-serif;border-collapse: collapse;width: 100%;}td, th {border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even) {background-color: #dddddd;}</style></head><body><table>"
 for x in range (180):
   urr = f"https://learn.yesofficer.com/new-courses/{x}?activeTab=content"
@@ -113,37 +111,21 @@ for x in range (180):
 
 open("a.html","w").write(ee+"</table></body></html>")
 </pre></code>
-
-
 <code><pre>
-
-
 import requests
 from bs4 import BeautifulSoup
-
 ee="<!DOCTYPE html><html><head><style>table {font-family: arial, sans-serif;border-collapse: collapse;width: 100%;}td, th {border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even) {background-color: #dddddd;}</style></head><body><table>"
 for x in range (180):
   urr = f"https://learn.yesofficer.com/new-courses/{x}?activeTab=content"
   response = requests.get(urr)
   soup = BeautifulSoup(response.content, "html.parser")
-  h1_tags = soup.find_all("h1")
-  for h1 in h1_tags:
-      htt = h1.text
-      ee+= f"\n<tr><td>{x}</td><td><a target='_blank' href='{urr}'>{htt}</a></td></tr>"
-      print(x , htt)
-
-open("a.html","w").write(ee+"</table></body></html>")
-
-
-soup = BeautifulSoup(html_content, "html.parser")
-
-script_tag = soup.find("script", id="__NEXT_DATA__")
-if script_tag:
+  script_tag = soup.find("script", id="__NEXT_DATA__")
+  if script_tag:
     script_innerhtml = script_tag.string
     print(script_innerhtml)
-else:
+  else:
     print("Script tag not found within the specified div.")
 
-  
+open("a.html","w").write(ee+"</table></body></html>")  
 </pre></code>
 </body></html>
